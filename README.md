@@ -38,7 +38,8 @@ To get a list of all options and learn how to use this app, enter the following 
 ## Examples
 1 - Dictionary search to find the password for a zip file:
 In this example I use rockyou.txt dictionary
-$ python3 Zydra.py –f file.zip –d rockyou.txt
+<br />```$ python3 Zydra.py –f file.zip –d rockyou.txt```<br /><br />
+![alt text](https://github.com/hamedA2/images/blob/master/zip_example.png)
  
 2 - Brute force search to find the password for the users in the shadow file:
 Minimum length of password is 4 and maximum length is 4 and we try to find passwords that are composed of numbers and symbols letters.

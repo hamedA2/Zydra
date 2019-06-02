@@ -52,5 +52,5 @@ To get a list of all options and learn how to use this app, enter the following 
 
 A special thank to my friend, [Hamed Izadi](https://github.com/hamedA2)!
 ## License
-[MIT]()
+[MIT](https://github.com/hamedA2/Zydra/blob/master/LICENSE)
  		

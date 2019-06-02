@@ -11,8 +11,8 @@ To run the app, minimal requirements are:
 *	Python 3.3 or higher
 *	debian-based linux distro, preferably Kali linux 2
 *	**qpdf** and **unrar** packages<br /> Installing these packages on kali is as easy as running the following commands on terminal:
-	<br />``` sudo apt-get update```
-  <br />``` sudo apt-get install qpdf unrar```
+<br />```$ sudo apt-get update```<br />
+<br />```$ sudo apt-get install qpdf unrar```
 *	some python modules in this program need to be installed manually, like:
 zipfile, rarfile, crypt, pyfiglet, py-term(for term module) and so on.
 you can use pip3 for install them
@@ -36,9 +36,9 @@ To get a list of all options and learn how to use this app, enter the following 
   <br /><br /> 	
   ![alt text](https://github.com/hamedA2/images/blob/master/help.png)
 ## Examples
-1 - Dictionary search to find the password for a zip file:
-In this example I use rockyou.txt dictionary
-<br />```$ python3 Zydra.py –f file.zip –d rockyou.txt```<br /><br />
+**1-** Dictionary search to find the password for a zip file
+<br />In this example I use rockyou.txt dictionary
+<br /><br />```$ python3 Zydra.py –f file.zip –d rockyou.txt```<br /><br />
 ![alt text](https://github.com/hamedA2/images/blob/master/zip_example.png)
  
 2 - Brute force search to find the password for the users in the shadow file:

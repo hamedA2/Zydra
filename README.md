@@ -45,4 +45,10 @@ To get a list of all options and learn how to use this app, enter the following 
 <br />Minimum length of password is 4 and maximum length is 4 and we try to find passwords that are composed of numbers and symbols letters.
 <br /><br />```$ python3 Zydra.py –f shadow –b digits,symbols –m 4 –x 4```<br /><br />
 ![alt text](https://github.com/hamedA2/images/blob/master/shadow_modified.png)
+
+## Author
+
+* **Hamed Hosseini** 
+
+A special thanks to my friend, Hamed Izadi!
  		

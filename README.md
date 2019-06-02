@@ -16,7 +16,7 @@ To run the app, minimal requirements are:
 *	some python modules in this program need to be installed manually, like:
 zipfile, rarfile, crypt, pyfiglet, py-term(for term module) and so on.
 you can use pip3 for install them
-example: <br />```pip3 install py-term```
+example: <br />```$ pip3 install py-term```
 <br />**notice**: rar,zip and pdf files must have an extension, shadow files does not need an extension.
 ## Disclaimer
 This tool is only for testing and academic purposes Do not use it for illegal purposes!
@@ -41,7 +41,7 @@ To get a list of all options and learn how to use this app, enter the following 
 <br /><br />```$ python3 Zydra.py –f file.zip –d rockyou.txt```<br /><br />
 ![alt text](https://github.com/hamedA2/images/blob/master/zip_example.png)
  
-2 - Brute force search to find the password for the users in the shadow file:
-Minimum length of password is 4 and maximum length is 4 and we try to find passwords that are composed of numbers and symbols letters.
-$ python3 Zydra.py –f shadow –b digits,symbols –m 4 –x 4
+**2-** Brute force search to find the password for the users in the shadow file
+<br />Minimum length of password is 4 and maximum length is 4 and we try to find passwords that are composed of numbers and symbols letters.
+<br /><br />```$ python3 Zydra.py –f shadow –b digits,symbols –m 4 –x 4```
  		

@@ -50,5 +50,5 @@ To get a list of all options and learn how to use this app, enter the following 
 
 * **Hamed Hosseini** 
 
-A special thanks to my friend, Hamed Izadi!
+A special thank to my friend, Hamed Izadi!
  		

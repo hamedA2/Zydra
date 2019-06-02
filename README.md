@@ -11,7 +11,7 @@ To run the app, minimal requirements are:
 *	Python 3.3 or higher
 *	debian-based linux distro, preferably Kali linux 2
 *	**qpdf** and **unrar** packages<br /> Installing these packages on kali is as easy as running the following commands on terminal:
-<br />```$ sudo apt-get update```<br />
+<br />```$ sudo apt-get update```
 <br />```$ sudo apt-get install qpdf unrar```
 *	some python modules in this program need to be installed manually, like:
 zipfile, rarfile, crypt, pyfiglet, py-term(for term module) and so on.

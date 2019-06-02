@@ -50,7 +50,7 @@ To get a list of all options and learn how to use this app, enter the following 
 
 * **Hamed Hosseini** 
 
-A special thank to my friend, [Hamed Izadi](https://github.com/hamedA2)!
+A special thank to, [Hamed Izadi](https://github.com/hamedA2)
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hamedA2/Zydra/blob/master/LICENSE) file for details
  		

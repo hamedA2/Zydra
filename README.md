@@ -1,11 +1,11 @@
 # Zydra
-Zydra is a file password recovery tool and Linux shadow file cracker 
+Zydra is a file password recovery tool and Linux shadow file cracker. 
 It uses the dictionary search or Brute force method for cracking passwords.
 ## Supported Files
 *	RAR Files
 *	Legacy ZIP Files
 *	PDF Files
-*	Linux shadow files (zydra can find all the user’s password in the linux shadow file one after the other)
+*	Linux Shadow Files (zydra can find all the user’s password in the linux shadow file one after the other)
 ## Prerequisites
 To run the app, minimal requirements are:
 *	Python 3.3 or higher
@@ -20,7 +20,7 @@ example: <br />```$ pip3 install py-term```
 <br />**notice**: rar,zip and pdf files must have an extension, shadow files does not need an extension.
 ## Disclaimer
 This tool is only for testing and academic purposes Do not use it for illegal purposes!
-## features
+## Features
 *	Cracking files password using two methods:  **1.** dictionary method **2.** brute force method
 *	In the brute force method, you can specify the min length and max length of the passwords.
 *	 In the brute force method, you can specify the type of characters that may be used in the password.

@@ -33,7 +33,7 @@ Download Zydra by cloning the Git repository:
 ## Usage
 To get a list of all options and learn how to use this app, enter the following command:<br />
   <br />```$ python3 Zydra.py -h```
-  <br /><br />
+  <br /><br /> 	
   ![alt text](https://github.com/hamedA2/images/blob/master/help.png)
 ## Examples
 1 - Dictionary search to find the password for a zip file:

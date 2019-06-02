@@ -29,7 +29,7 @@ This tool is only for testing and academic purposes Do not use it for illegal pu
 *	One of the most important features of Zydra is the multiprocessing feature that speeds up the program. For example if you have 8 CPU cores, Zydra will use all of them for processing at the same time.
 ## Installation
 Download Zydra by cloning the Git repository:
-  <br />```$ git clone https://github.com/Zydra/Zydra.git```
+  <br />```$ git clone https://github.com/hamedA2/Zydra/blob/master/Zydra.py```
 ## Usage
 To get a list of all options and learn how to use this app, enter the following command:<br />
   <br />```$ python3 Zydra.py -h```

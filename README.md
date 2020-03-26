@@ -30,6 +30,8 @@ This tool is only for testing and academic purposes Do not use it for illegal pu
 ## Installation
 Download Zydra by cloning the Git repository:
   <br />```$ git clone https://github.com/hamedA2/Zydra.git```
+  
+You can also use [vagrant](https://www.vagrantup.com/) to automatically install and run Zydra (more information at the bottom of the page).
 ## Usage
 To get a list of all options and learn how to use this app, enter the following command:<br />
   <br />```$ python3 Zydra.py -h```
@@ -46,6 +48,31 @@ To get a list of all options and learn how to use this app, enter the following 
 <br /><br />```$ python3 Zydra.py –f shadow –b digits,symbols –m 4 –x 4```<br /><br />
 ![alt text](https://github.com/hamedA2/images/blob/master/shadow_modified.png)
 
+## Vagrant
+To run Zydra using vagrant use the following command (you have to be in the same folder as the repository):
+
+`vagrant up`
+
+and once it finishes inialisation, you can run:
+
+`vagrant ssh`
+
+to connect to the virtual machine.
+
+To exit the virtual machine just type `exit` in the shell.
+
+To destroy the virtual machine run `vagrant destroy`.
+
+More information regarding vagrant usage can be found [here](https://www.vagrantup.com/docs/cli/)
+
+**Note:**
+By default the `Vagrantfile` uses the following settings:
+```
+    vb.cpus = 4
+    vb.memory = 4096
+```
+Edit the `Vagrantfile` and change those values to improve the performance.
+
 ## Author
 
 * **Hamed Hosseini** 
@@ -54,3 +81,4 @@ A special thank to, [Hamed Izadi](https://github.com/hamedeasy)
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hamedA2/Zydra/blob/master/LICENSE) file for details
  		
+

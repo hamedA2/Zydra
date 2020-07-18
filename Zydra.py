@@ -580,7 +580,11 @@ class Zydra():
     def banner(self):
         term.clear()
         term.pos(1, 1)
-        banner = pyfiglet.figlet_format("ZYDRA", font="epic").replace("\n", "\n\t\t", 7)
+		# check if font "epic" exists on this system
+        # sudo wget http://www.figlet.org/fonts/epic.flf -O /usr/share/figlet/epic.flf
+        bannerfont = "epic" if os.path.exists('/usr/share/figlet/epic.flf') else "banner"
+        banner = pyfiglet.figlet_format("ZYDRA", font=bannerfont).replace("\n", "\n\t\t", 7)
+		
         cprint("\r\n\t" + "@" * 61, "blue", end="")
         cprint("\n\t\t" + banner + "\t\tAuthor : Hamed Hosseini", "blue", attrs=['bold'])
         cprint("\t" + "@" * 61 + "\n", "blue")

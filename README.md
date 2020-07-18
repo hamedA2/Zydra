@@ -18,6 +18,8 @@ zipfile, rarfile, crypt, pyfiglet, py-term(for term module) and so on.
 you can use pip3 for install them
 example: <br />```$ pip3 install py-term```
 <br />**notice**: rar,zip and pdf files must have an extension, shadow files does not need an extension.
+*   Install figlet font "epic" if it does not exists on your system:
+<br/> ```sudo wget http://www.figlet.org/fonts/epic.flf -O /usr/share/figlet/epic.flf```
 ## Disclaimer
 This tool is only for testing and academic purposes Do not use it for illegal purposes!
 ## Features

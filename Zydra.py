@@ -298,7 +298,7 @@ class Zydra():
             if self.stop is True:
                 exit(0)
             elif self.count == len(passwords_list):# self_cont kam mishe
-                if self.file_type is "rar":
+                if self.file_type == "rar":
                     self.search_rar_pass(passwords_list, file, max_words)
                 if self.stop is False:
                     print("\n\t" + self.red("[-] Password not found") + "\n")

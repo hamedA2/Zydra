@@ -14,7 +14,7 @@ sudo apt-get install python3.7 -y
 sudo apt-get install python3-pip -y
 pip3 --version
 
-pip3 install zipfile
+pip3 install zipfile37
 pip3 install rarfile
 pip3 install pyfiglet
 pip3 install py-term

@@ -1,0 +1,4 @@
+py-term==0.6
+pyfiglet==0.8.post1
+rarfile==4.0
+termcolor==1.1.0

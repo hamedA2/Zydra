@@ -10,14 +10,12 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 
 sudo apt-get install qpdf -y
 sudo apt-get install unrar -y
-sudo apt-get install python3.7 -y 
+sudo apt-get install python3.7 -y
 sudo apt-get install python3-pip -y
 pip3 --version
 
-pip3 install zipfile
-pip3 install rarfile
-pip3 install pyfiglet
-pip3 install py-term
-pip3 install termcolor
-
+python -m venv .venv
+source .venv/bin/activate
+pip install pip --upgrade
+pip install -r requirements.txt
 cd /vagrant/

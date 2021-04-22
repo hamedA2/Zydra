@@ -584,7 +584,7 @@ class Zydra():
         # sudo wget http://www.figlet.org/fonts/epic.flf -O /usr/share/figlet/epic.flf
         bannerfont = "epic" if os.path.exists('/usr/share/figlet/epic.flf') else "banner"
         banner = pyfiglet.figlet_format("ZYDRA", font=bannerfont).replace("\n", "\n\t\t", 7)
-		
+
         cprint("\r\n\t" + "@" * 61, "blue", end="")
         cprint("\n\t\t" + banner + "\t\tAuthor : Hamed Hosseini", "blue", attrs=['bold'])
         cprint("\t" + "@" * 61 + "\n", "blue")
@@ -623,8 +623,8 @@ class Zydra():
         parser.add_option("-d", dest="dictfile", type='string', help="Specifies dictionary file")
         parser.add_option("-f", dest="file", type='string', help="Specifies the file")
         parser.add_option("-b", dest="chartype", type='string', help="Specifies the character type")
-        parser.add_option("-m", dest="minlength", type='string', help="Specifies minimum length of password")
-        parser.add_option("-x", dest="maxlength", type='string', help="Specifies maximum length of password")
+        parser.add_option("-m", dest="minlength", type='int', help="Specifies minimum length of password")
+        parser.add_option("-x", dest="maxlength", type='int', help="Specifies maximum length of password")
 
         (options, args) = parser.parse_args()
         try:

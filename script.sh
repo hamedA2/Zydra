@@ -10,7 +10,7 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -
 
 sudo apt-get install qpdf -y
 sudo apt-get install unrar -y
-sudo apt-get install python3.7 -y 
+sudo apt-get install python3 -y 
 sudo apt-get install python3-pip -y
 pip3 --version
 

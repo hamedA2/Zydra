@@ -18,6 +18,7 @@ import shutil
 import subprocess
 from multiprocessing import Process, BoundedSemaphore, Queue, current_process, cpu_count
 
+
 class Zydra():
     def __init__(self):
         self.start_time = time.monotonic()
@@ -44,7 +45,8 @@ class Zydra():
         fer_pointer = 0
         while timer < 20:
             list[pointer] = list[pointer].upper()
-            print("\r" + self.blue("".join(str(x) for x in list) + " " + fer[fer_pointer]), end="")
+            print("\r" + self.blue("".join(str(x)
+                                           for x in list) + " " + fer[fer_pointer]), end="")
             list[pointer] = list[pointer].lower()
             max_fer = len(fer) - 1
             if fer_pointer == max_fer:
@@ -129,7 +131,8 @@ class Zydra():
 
     def search_zip_pass(self, passwords_list, compress_file, max_words):
         try:
-            temp_file = self.create_temporary_copy(compress_file, passwords_list[1])
+            temp_file = self.create_temporary_copy(
+                compress_file, passwords_list[1])
             for word in passwords_list:
                 password = word.strip('\r').strip('\n')
                 stop = self.stop.get()
@@ -138,11 +141,13 @@ class Zydra():
                     self.counter(max_words)
                     try:
                         with zipfile.ZipFile(temp_file, "r") as zfile:
-                            zfile.extractall(pwd=bytes(password, encoding='utf-8'))
+                            zfile.extractall(
+                                pwd=bytes(password, encoding='utf-8'))
                             self.stop.get()
                             self.stop.put(True)
                             time.sleep(3)
-                            print("\n\t" + self.green("[+] Password Found: " + password) + "\n")
+                            print(
+                                "\n\t" + self.green("[+] Password Found: " + password) + "\n")
                             break
                     except Exception as e:
                         # print(e)
@@ -184,7 +189,8 @@ class Zydra():
 
     def search_rar_pass(self, passwords_list, compress_file, max_words):
         try:
-            temp_file = self.create_temporary_copy(compress_file, passwords_list[1])
+            temp_file = self.create_temporary_copy(
+                compress_file, passwords_list[1])
             for word in passwords_list:
                 password = word.strip('\r').strip('\n')
                 stop = self.stop.get()
@@ -198,7 +204,8 @@ class Zydra():
                             self.stop.get()
                             self.stop.put(True)
                             time.sleep(3)
-                            print("\n\t" + self.green("[+] Password Found: " + password + '\n'))
+                            print(
+                                "\n\t" + self.green("[+] Password Found: " + password + '\n'))
                             break
                     except Exception as e:
                         # print(e)
@@ -229,7 +236,8 @@ class Zydra():
                 self.stop.put(stop)
                 if stop is False:  # if find password dont doing more
                     self.counter(max_words)
-                    proc = subprocess.Popen(['qpdf', "--password=" + password, '--decrypt', temp_file, self.decrypted_file_name], stderr=subprocess.PIPE)
+                    proc = subprocess.Popen(['qpdf', "--password=" + password, '--decrypt',
+                                             temp_file, self.decrypted_file_name], stderr=subprocess.PIPE)
                     proc.wait()
                     # output, error = proc.communicate()
                     status = proc.returncode
@@ -237,8 +245,10 @@ class Zydra():
                         self.stop.get()
                         self.stop.put(True)
                         time.sleep(3)
-                        print("\n\t" + self.green("[+] Password Found: " + password))
-                        print("\t" + self.blue("[*]") + self.white(" Your decrypted file is ") + self.bwhite(self.decrypted_file_name) + "\n")
+                        print(
+                            "\n\t" + self.green("[+] Password Found: " + password))
+                        print("\t" + self.blue("[*]") + self.white(
+                            " Your decrypted file is ") + self.bwhite(self.decrypted_file_name) + "\n")
                         # self.end_time()
                         break
                     elif status == 2:
@@ -273,7 +283,8 @@ class Zydra():
                         self.stop.get()
                         self.stop.put(True)
                         time.sleep(4)
-                        print("\n\t" + self.green("[+] Password Found: " + password) + "\n")
+                        print(
+                            "\n\t" + self.green("[+] Password Found: " + password) + "\n")
                         break
                     else:
                         pass
@@ -297,8 +308,8 @@ class Zydra():
         while True:
             if self.stop is True:
                 exit(0)
-            elif self.count == len(passwords_list):# self_cont kam mishe
-                if self.file_type is "rar":
+            elif self.count == len(passwords_list):  # self_cont kam mishe
+                if self.file_type == "rar":
                     self.search_rar_pass(passwords_list, file, max_words)
                 if self.stop is False:
                     print("\n\t" + self.red("[-] Password not found") + "\n")
@@ -312,11 +323,13 @@ class Zydra():
         last_check = 0
         passwords_group = []
         possible_words = self.count_word(dict_file)
-        self.last_process_number = int(possible_words / self.shot) + (possible_words % self.shot > 0)
+        self.last_process_number = int(
+            possible_words / self.shot) + (possible_words % self.shot > 0)
         self.count.put(possible_words)
         self.file_type = self.detect_file_type(file)
         self.fun("Starting password cracking for " + file)
-        print("\n " + self.blue("[*]") + self.white(" Count of possible passwords: ") + self.bwhite(str(possible_words)))
+        print("\n " + self.blue("[*]") + self.white(
+            " Count of possible passwords: ") + self.bwhite(str(possible_words)))
         if self.file_type == "text":
             file = open(file)
             for line in file.readlines():
@@ -325,7 +338,8 @@ class Zydra():
                 crypt_pass = line.split(':')[1].strip(' ')
                 if crypt_pass not in ['*', '!', '!!']:
                     user = line.split(':')[0]
-                    print("  " + self.blue("[**]") + self.white(" cracking Password for: ") + self.bwhite(user))
+                    print(
+                        "  " + self.blue("[**]") + self.white(" cracking Password for: ") + self.bwhite(user))
                     algorythm = crypt_pass.split('$')[1].strip(' ')
                     salt = crypt_pass.split('$')[2].strip(' ')
                     salt_for_crypt = '$' + algorythm + '$' + salt + '$'
@@ -367,7 +381,8 @@ class Zydra():
                         stop = self.stop.get()
                         self.stop.put(stop)
                         if stop is False:
-                            t = Process(target=self.search_zip_pass, args=(passwords, file, possible_words))
+                            t = Process(target=self.search_zip_pass, args=(
+                                passwords, file, possible_words))
                             self.threads.append(t)
                             self.process_count += 1
                             t.start()
@@ -393,7 +408,8 @@ class Zydra():
                         stop = self.stop.get()
                         self.stop.put(stop)
                         if stop is False:
-                            t = Process(target=self.search_pdf_pass, args=(passwords, file, possible_words))
+                            t = Process(target=self.search_pdf_pass, args=(
+                                passwords, file, possible_words))
                             self.threads.append(t)
                             self.process_count += 1
                             t.start()
@@ -418,7 +434,8 @@ class Zydra():
                         stop = self.stop.get()
                         self.stop.put(stop)
                         if stop is False:  # ok finishing all process after finding password
-                            t = Process(target=self.search_rar_pass, args=(passwords, file, possible_words))
+                            t = Process(target=self.search_rar_pass, args=(
+                                passwords, file, possible_words))
                             self.threads.append(t)
                             self.process_count += 1
                             t.start()
@@ -435,11 +452,13 @@ class Zydra():
         last_check = 0
         passwords_group = []
         possible_com = self.count_possible_com(chars, int(min), int(max))
-        self.last_process_number = int(possible_com / self.shot) + (possible_com % self.shot > 0)
+        self.last_process_number = int(
+            possible_com / self.shot) + (possible_com % self.shot > 0)
         self.count.put(possible_com)
         self.file_type = self.detect_file_type(file)
         self.fun("Starting password cracking for " + file)
-        print("\n " + self.blue("[*]") + self.white(" Count of possible passwords: ") + self.bwhite(str(possible_com)))
+        print("\n " + self.blue("[*]") + self.white(
+            " Count of possible passwords: ") + self.bwhite(str(possible_com)))
         if self.file_type == "text":
             file = open(file)
             for line in file.readlines():
@@ -448,7 +467,8 @@ class Zydra():
                 crypt_pass = line.split(':')[1].strip(' ')
                 if crypt_pass not in ['*', '!', '!!']:
                     user = line.split(':')[0]
-                    print("  " + self.blue("[**]") + self.white(" cracking Password for: ") + self.bwhite(user))
+                    print(
+                        "  " + self.blue("[**]") + self.white(" cracking Password for: ") + self.bwhite(user))
                     algorythm = crypt_pass.split('$')[1].strip(' ')
                     salt = crypt_pass.split('$')[2].strip(' ')
                     salt_for_crypt = '$' + algorythm + '$' + salt + '$'
@@ -465,7 +485,8 @@ class Zydra():
                                 stop = self.stop.get()
                                 self.stop.put(stop)
                                 if stop is False:
-                                    t = Process(target=self.search_shadow_pass, args=(passwords, salt_for_crypt, crypt_pass, possible_com, user))
+                                    t = Process(target=self.search_shadow_pass, args=(
+                                        passwords, salt_for_crypt, crypt_pass, possible_com, user))
                                     self.threads.append(t)
                                     self.process_count += 1
                                     t.start()
@@ -491,7 +512,8 @@ class Zydra():
                         stop = self.stop.get()
                         self.stop.put(stop)
                         if stop is False:
-                            t = Process(target=self.search_zip_pass, args=(passwords, file, possible_com))
+                            t = Process(target=self.search_zip_pass, args=(
+                                passwords, file, possible_com))
                             self.threads.append(t)
                             self.process_count += 1
                             t.start()
@@ -518,7 +540,8 @@ class Zydra():
                         stop = self.stop.get()
                         self.stop.put(stop)
                         if stop is False:
-                            t = Process(target=self.search_pdf_pass, args=(passwords, file, possible_com))
+                            t = Process(target=self.search_pdf_pass, args=(
+                                passwords, file, possible_com))
                             self.threads.append(t)
                             self.process_count += 1
                             t.start()
@@ -544,7 +567,8 @@ class Zydra():
                         stop = self.stop.get()
                         self.stop.put(stop)
                         if stop is False:  # ok finishing all process after finding password
-                            t = Process(target=self.search_rar_pass, args=(passwords, file, possible_com))
+                            t = Process(target=self.search_rar_pass, args=(
+                                passwords, file, possible_com))
                             self.threads.append(t)
                             self.process_count += 1
                             t.start()
@@ -580,13 +604,16 @@ class Zydra():
     def banner(self):
         term.clear()
         term.pos(1, 1)
-		# check if font "epic" exists on this system
+        # check if font "epic" exists on this system
         # sudo wget http://www.figlet.org/fonts/epic.flf -O /usr/share/figlet/epic.flf
-        bannerfont = "epic" if os.path.exists('/usr/share/figlet/epic.flf') else "banner"
-        banner = pyfiglet.figlet_format("ZYDRA", font=bannerfont).replace("\n", "\n\t\t", 7)
-		
+        bannerfont = "epic" if os.path.exists(
+            '/usr/share/figlet/epic.flf') else "banner"
+        banner = pyfiglet.figlet_format(
+            "ZYDRA", font=bannerfont).replace("\n", "\n\t\t", 7)
+
         cprint("\r\n\t" + "@" * 61, "blue", end="")
-        cprint("\n\t\t" + banner + "\t\tAuthor : Hamed Hosseini", "blue", attrs=['bold'])
+        cprint("\n\t\t" + banner + "\t\tAuthor : Hamed Hosseini",
+               "blue", attrs=['bold'])
         cprint("\t" + "@" * 61 + "\n", "blue")
 
     def end_time(self):
@@ -595,7 +622,8 @@ class Zydra():
         end_time = time.monotonic()
         execution_time = (timedelta(seconds=end_time - self.start_time))
         print(self.blue("End time ==> ") + self.white(end_time_show))
-        print(self.blue("Execution time ==> ") + self.white(str(execution_time)) + "\n")
+        print(self.blue("Execution time ==> ") +
+              self.white(str(execution_time)) + "\n")
         term.saveCursor()
         term.pos(7, 15)
         term.writeLine("ok", term.green, term.blink)
@@ -620,11 +648,16 @@ class Zydra():
                 "\n\tExample: %prog -f <file> -b <space,digits> -m 1 -x 8"
 
         parser = optparse.OptionParser(usage)
-        parser.add_option("-d", dest="dictfile", type='string', help="Specifies dictionary file")
-        parser.add_option("-f", dest="file", type='string', help="Specifies the file")
-        parser.add_option("-b", dest="chartype", type='string', help="Specifies the character type")
-        parser.add_option("-m", dest="minlength", type='string', help="Specifies minimum length of password")
-        parser.add_option("-x", dest="maxlength", type='string', help="Specifies maximum length of password")
+        parser.add_option("-d", dest="dictfile", type='string',
+                          help="Specifies dictionary file")
+        parser.add_option("-f", dest="file", type='string',
+                          help="Specifies the file")
+        parser.add_option("-b", dest="chartype", type='string',
+                          help="Specifies the character type")
+        parser.add_option("-m", dest="minlength", type='string',
+                          help="Specifies minimum length of password")
+        parser.add_option("-x", dest="maxlength", type='string',
+                          help="Specifies maximum length of password")
 
         (options, args) = parser.parse_args()
         try:
@@ -634,15 +667,18 @@ class Zydra():
                     if options.dictfile:
                         if os.path.isfile(options.dictfile):
                             dictfile = os.path.abspath(options.dictfile)
-                            print(self.blue("Start time ==> ") + self.white(start_time_show) + "\n")
+                            print(self.blue("Start time ==> ") +
+                                  self.white(start_time_show) + "\n")
                             self.dict_guess_password(dictfile, file)
                         else:
-                            parser.error(" " + options.dictfile + " dictionary file does not exist")
+                            parser.error(" " + options.dictfile +
+                                         " dictionary file does not exist")
                             exit(0)
                     elif options.chartype:
                         chars = self.make_chars(options.chartype)
                         if chars is False:
-                            parser.error(" " + options.chartype + " character type is not valid, Use --help for more info")
+                            parser.error(
+                                " " + options.chartype + " character type is not valid, Use --help for more info")
                         if options.minlength is None:
                             parser.error(" Enter minimum length of password")
                             exit(0)
@@ -654,11 +690,14 @@ class Zydra():
                                          ", Use --help for more info")
                             exit(0)
                         else:
-                            print(self.blue("Start time ==> ") + self.white(start_time_show) + "\n")
-                            self.bruteforce_guess_password(chars, options.minlength, options.maxlength, file)
+                            print(self.blue("Start time ==> ") +
+                                  self.white(start_time_show) + "\n")
+                            self.bruteforce_guess_password(
+                                chars, options.minlength, options.maxlength, file)
 
                     else:
-                        parser.error(" Choose a wordlist or bruteforce method, Use --help for more info")
+                        parser.error(
+                            " Choose a wordlist or bruteforce method, Use --help for more info")
                         exit(0)
                 else:
                     parser.error("" + options.file + " file does not exist")
@@ -670,7 +709,8 @@ class Zydra():
         except KeyboardInterrupt:
             time.sleep(1)
             self.delete_temporary_directory()
-            print(self.red("\n\n [-] Detected CTRL+C") + self.white("\n closing app...\n Finish\n"))
+            print(self.red("\n\n [-] Detected CTRL+C") +
+                  self.white("\n closing app...\n Finish\n"))
             # self.end_time()
             exit(0)
 

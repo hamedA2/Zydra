@@ -90,7 +90,7 @@ class Zydra():
 
     def count_word(self, dict_file):
         count = 0
-        with open(dict_file, "r") as wordlist:
+        with open(dict_file, "r", encoding="ISO-8859-1") as wordlist:
             for line in wordlist:
                 count += 1
         return count
@@ -584,7 +584,7 @@ class Zydra():
         # sudo wget http://www.figlet.org/fonts/epic.flf -O /usr/share/figlet/epic.flf
         bannerfont = "epic" if os.path.exists('/usr/share/figlet/epic.flf') else "banner"
         banner = pyfiglet.figlet_format("ZYDRA", font=bannerfont).replace("\n", "\n\t\t", 7)
-		
+
         cprint("\r\n\t" + "@" * 61, "blue", end="")
         cprint("\n\t\t" + banner + "\t\tAuthor : Hamed Hosseini", "blue", attrs=['bold'])
         cprint("\t" + "@" * 61 + "\n", "blue")

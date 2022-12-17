@@ -134,7 +134,7 @@ class Zydra():
                 password = word.strip('\r').strip('\n')
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:  # if find password dont doing more
+                if stop == False:  # if find password dont doing more
                     self.counter(max_words)
                     try:
                         with zipfile.ZipFile(temp_file, "r") as zfile:
@@ -156,7 +156,7 @@ class Zydra():
                 time.sleep(20)
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:
+                if stop == False:
                     print("\n\t" + self.red("[-] password not found") + "\n")
                 else:
                     pass
@@ -189,7 +189,7 @@ class Zydra():
                 password = word.strip('\r').strip('\n')
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:  # if find password dont doing more
+                if stop == False:  # if find password dont doing more
                     self.counter(max_words)
                     try:
                         with rarfile.RarFile(temp_file, "r") as rfile:
@@ -212,7 +212,7 @@ class Zydra():
                 time.sleep(20)
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:
+                if stop == False:
                     print("\n\t" + self.red("[-] password not found") + "\n")
                 else:
                     pass
@@ -227,7 +227,7 @@ class Zydra():
                 password = word.strip('\r').strip('\n')
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:  # if find password dont doing more
+                if stop == False:  # if find password dont doing more
                     self.counter(max_words)
                     proc = subprocess.Popen(['qpdf', "--password=" + password, '--decrypt', temp_file, self.decrypted_file_name], stderr=subprocess.PIPE)
                     proc.wait()
@@ -252,7 +252,7 @@ class Zydra():
                 time.sleep(20)
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:
+                if stop == False:
                     print("\n\t" + self.red("[-] password not found") + "\n")
                 else:
                     pass
@@ -266,7 +266,7 @@ class Zydra():
                 password = word.strip('\r').strip('\n')
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:  # if find password dont doing more
+                if stop == False:  # if find password dont doing more
                     self.counter(max_words)
                     cryptword = crypt.crypt(password, salt_for_crypt)
                     if cryptword == crypt_pass:
@@ -285,7 +285,7 @@ class Zydra():
                 time.sleep(20)
                 stop = self.stop.get()
                 self.stop.put(stop)
-                if stop is False:
+                if stop == False:
                     print("\n\t" + self.red("[-] password not found") + "\n")
                 else:
                     pass
@@ -295,12 +295,12 @@ class Zydra():
 
     def last_words_check(self, max_words, passwords_list, file):
         while True:
-            if self.stop is True:
+            if self.stop == True:
                 exit(0)
             elif self.count == len(passwords_list):# self_cont kam mishe
-                if self.file_type is "rar":
+                if self.file_type == "rar":
                     self.search_rar_pass(passwords_list, file, max_words)
-                if self.stop is False:
+                if self.stop == False:
                     print("\n\t" + self.red("[-] Password not found") + "\n")
                     self.delete_temporary_directory()
                     self.end_time()
@@ -340,7 +340,7 @@ class Zydra():
                                 self.process_lock.acquire()
                                 stop = self.stop.get()
                                 self.stop.put(stop)
-                                if stop is False:
+                                if stop == False:
                                     t = Process(target=self.search_shadow_pass,
                                                 args=(passwords, salt_for_crypt, crypt_pass, possible_words, user))
                                     self.threads.append(t)
@@ -366,7 +366,7 @@ class Zydra():
                         self.process_lock.acquire()
                         stop = self.stop.get()
                         self.stop.put(stop)
-                        if stop is False:
+                        if stop == False:
                             t = Process(target=self.search_zip_pass, args=(passwords, file, possible_words))
                             self.threads.append(t)
                             self.process_count += 1
@@ -392,7 +392,7 @@ class Zydra():
                         self.process_lock.acquire()
                         stop = self.stop.get()
                         self.stop.put(stop)
-                        if stop is False:
+                        if stop == False:
                             t = Process(target=self.search_pdf_pass, args=(passwords, file, possible_words))
                             self.threads.append(t)
                             self.process_count += 1
@@ -417,7 +417,7 @@ class Zydra():
                         self.process_lock.acquire()
                         stop = self.stop.get()
                         self.stop.put(stop)
-                        if stop is False:  # ok finishing all process after finding password
+                        if stop == False:  # ok finishing all process after finding password
                             t = Process(target=self.search_rar_pass, args=(passwords, file, possible_words))
                             self.threads.append(t)
                             self.process_count += 1
@@ -464,7 +464,7 @@ class Zydra():
                                 self.process_lock.acquire()
                                 stop = self.stop.get()
                                 self.stop.put(stop)
-                                if stop is False:
+                                if stop == False:
                                     t = Process(target=self.search_shadow_pass, args=(passwords, salt_for_crypt, crypt_pass, possible_com, user))
                                     self.threads.append(t)
                                     self.process_count += 1
@@ -490,7 +490,7 @@ class Zydra():
                         self.process_lock.acquire()
                         stop = self.stop.get()
                         self.stop.put(stop)
-                        if stop is False:
+                        if stop == False:
                             t = Process(target=self.search_zip_pass, args=(passwords, file, possible_com))
                             self.threads.append(t)
                             self.process_count += 1
@@ -517,7 +517,7 @@ class Zydra():
                         self.process_lock.acquire()
                         stop = self.stop.get()
                         self.stop.put(stop)
-                        if stop is False:
+                        if stop == False:
                             t = Process(target=self.search_pdf_pass, args=(passwords, file, possible_com))
                             self.threads.append(t)
                             self.process_count += 1
@@ -543,7 +543,7 @@ class Zydra():
                         self.process_lock.acquire()
                         stop = self.stop.get()
                         self.stop.put(stop)
-                        if stop is False:  # ok finishing all process after finding password
+                        if stop == False:  # ok finishing all process after finding password
                             t = Process(target=self.search_rar_pass, args=(passwords, file, possible_com))
                             self.threads.append(t)
                             self.process_count += 1
@@ -641,12 +641,12 @@ class Zydra():
                             exit(0)
                     elif options.chartype:
                         chars = self.make_chars(options.chartype)
-                        if chars is False:
+                        if chars == False:
                             parser.error(" " + options.chartype + " character type is not valid, Use --help for more info")
-                        if options.minlength is None:
+                        if options.minlength == None:
                             parser.error(" Enter minimum length of password")
                             exit(0)
-                        if options.maxlength is None:
+                        if options.maxlength == None:
                             parser.error(" Enter maximum length of password")
                             exit(0)
                         if options.minlength > options.maxlength:

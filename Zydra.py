@@ -317,6 +317,7 @@ class Zydra():
         self.file_type = self.detect_file_type(file)
         self.fun("Starting password cracking for " + file)
         print("\n " + self.blue("[*]") + self.white(" Count of possible passwords: ") + self.bwhite(str(possible_words)))
+	    
         if self.file_type == "text":
             file = open(file)
             for line in file.readlines():
@@ -354,6 +355,7 @@ class Zydra():
                             x.join()
                         self.last_process_number *= 2
             self.end_time()
+		
         elif self.file_type == "zip":
             with open(dict_file, "r") as wordlist:
                 for word in wordlist:
@@ -379,6 +381,7 @@ class Zydra():
                     x.join()
                 self.delete_temporary_directory()
                 self.end_time()
+		    
         elif self.file_type == "pdf":
             self.decrypted_file_name = "decrypted_" + file.split('/')[-1]
             with open(dict_file, "r") as wordlist:
@@ -405,6 +408,7 @@ class Zydra():
                     x.join()
                 self.delete_temporary_directory()
                 self.end_time()
+		    
         elif self.file_type == "rar":
             with open(dict_file, "r") as wordlist:
                 for word in wordlist:
@@ -440,6 +444,7 @@ class Zydra():
         self.file_type = self.detect_file_type(file)
         self.fun("Starting password cracking for " + file)
         print("\n " + self.blue("[*]") + self.white(" Count of possible passwords: ") + self.bwhite(str(possible_com)))
+	    
         if self.file_type == "text":
             file = open(file)
             for line in file.readlines():
@@ -477,6 +482,7 @@ class Zydra():
                         x.join()
                     self.last_process_number *= 2
             self.end_time()
+		
         elif self.file_type == "zip":
             for password_length in range(int(min), int(max) + 1):
                 for guess in itertools.product(chars, repeat=password_length):
@@ -503,6 +509,7 @@ class Zydra():
                 x.join()
             self.delete_temporary_directory()
             self.end_time()
+		
         elif self.file_type == "pdf":
             self.decrypted_file_name = "decrypted_" + file.split('/')[-1]
             for password_length in range(int(min), int(max) + 1):
@@ -530,6 +537,7 @@ class Zydra():
                 x.join()
             self.delete_temporary_directory()
             self.end_time()
+		
         elif self.file_type == "rar":
             for password_length in range(int(min), int(max) + 1):
                 for guess in itertools.product(chars, repeat=password_length):
@@ -639,6 +647,7 @@ class Zydra():
                         else:
                             parser.error(" " + options.dictfile + " dictionary file does not exist")
                             exit(0)
+				
                     elif options.chartype:
                         chars = self.make_chars(options.chartype)
                         if chars is False:
@@ -653,6 +662,7 @@ class Zydra():
                             parser.error(" Min and Max must be numbers and Min must be \nless than Max or be the same"
                                          ", Use --help for more info")
                             exit(0)
+				
                         else:
                             print(self.blue("Start time ==> ") + self.white(start_time_show) + "\n")
                             self.bruteforce_guess_password(chars, options.minlength, options.maxlength, file)
